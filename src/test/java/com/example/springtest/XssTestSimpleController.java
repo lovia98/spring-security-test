@@ -12,6 +12,7 @@ import java.util.Map;
 
 /**
  * xss필터를 테스트 하기 위한 simple 컨들롤러
+ * (테스트를 위한 컨트롤러 xss필터 기능은 현재 안넣음)
  */
 @RestController
 public class XssTestSimpleController {
