@@ -10,11 +10,13 @@
           <scope>test</scope>
       </dependency>
     ```  
-  2. security Configure  
-    ```
+    
+  2. Security Configure example
+    ```  
       @Configuration
       public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
+          //인메모리에 "USER"롤을 가진 계정 "user", "ADMIN"롤을 가진 계정 "admin"을 등록
           @Override
           protected void configure(AuthenticationManagerBuilder auth) throws Exception {
               PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
@@ -26,6 +28,7 @@
                       .roles("ADMIN");
           }
 
+          //모든 url은 "USER"롤 이상만 접근 가능하며, "/admin/**"은 "ADMIN" 권한만 접근 가능
           @Override
           protected void configure(HttpSecurity http) throws Exception {
               http.authorizeRequests()
@@ -34,5 +37,7 @@
                       .and()
                           .formLogin();
           }
-      }
-    ```
+      }  
+    ```  
+    
+  3. 
