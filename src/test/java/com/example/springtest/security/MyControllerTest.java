@@ -1,4 +1,4 @@
-package com.example.springtest;
+package com.example.springtest.security;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;

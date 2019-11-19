@@ -1,4 +1,4 @@
-package com.example.springtest;
+package com.example.springtest.security;
 
 import com.example.springtest.annotaion.WithRoleAdmin;
 import com.example.springtest.annotaion.WithRoleUser;

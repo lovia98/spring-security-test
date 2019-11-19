@@ -1,4 +1,4 @@
-package com.example.springtest;
+package com.example.springtest.xss;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
