@@ -108,7 +108,8 @@
         @WithMockUser(username = "mockUser", roles = {"USER", "ADMIN"})
         public void given_requestAdminPage_withRoleBoth_expect_viewNameIsMyPage() throws Exception {
             mvc.perform(get("/admin/myPage"))
-                    .andExpect(view().name("myPage"));
+                    .andExpect(view().name("myPage"))
+                    .andExpect(redirectedUrl(LOGIN_PAGE_URI));;
         }
 
         @Test
@@ -116,6 +117,7 @@
         public void given_requestRootPageAnnotaion_expect_redirectLoginPage() throws Exception {
             mvc.perform(get("/myPage"))
                     .andDo(print())
+                    .andExpect(redirectedUrl(LOGIN_PAGE_URI));
         }
 
     }
@@ -157,5 +159,19 @@
 
         //...
 
+    }
+```
+  * 로그인 처리 테스트
+```
+    @Test
+    public void given_LoginWithCorrectUser_expectSuccess() throws Exception {
+        mvc.perform(formLogin().user("user").password("password"))
+                .andExpect(authenticated());
+    }
+
+    @Test
+    public void given_LoginWithCorrectUser_expectFail() throws Exception {
+        mvc.perform(formLogin().user("someone").password("password"))
+                .andExpect(unauthenticated());
     }
 ```
